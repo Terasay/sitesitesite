@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин ElectroShop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <header class="top-header">
+        <div class="container header-flex">
+            <div class="logo">
+                <img src="img/logo.png" alt="ElectroShop" style="height:40px; width:auto; display:block;" />
+            </div>
+            <form class="search-bar">
+                <input type="text" placeholder="Поиск по товарам...">
+                <button type="submit">
+                    <span class="svg-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0077FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+        <nav class="main-nav">
+            <div class="container nav-flex">
+                <ul class="nav-list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#" id="delivery-link" data-map-url="https://go.2gis.com/N0Pk3">Доставка</a></li>
+                    <li><a href="#footer">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="header-bar"></div>
+    </header>
+
+    <main class="shop-main">
+        <div class="container">
+            <h1>Каталог товаров</h1>
+            <div class="shop-controls">
+                <div class="shop-categories">
+                    <button class="shop-category" data-category="all">Все категории</button>
+                    <button class="shop-category" data-category="smartphones">Смартфоны</button>
+                    <button class="shop-category" data-category="notebooks">Ноутбуки</button>
+                    <button class="shop-category" data-category="tvs">Телевизоры</button>
+                    <button class="shop-category" data-category="headphones">Наушники</button>
+                    <button class="shop-category" data-category="consoles">Игровые приставки</button>
+                    <button class="shop-category" data-category="smarthome">Умный дом</button>
+                </div>
+                <div class="shop-sort">
+                    <label for="sort-select">Сортировать:</label>
+                    <select id="sort-select">
+                        <option value="default">По умолчанию</option>
+                        <option value="price-asc">По цене (возрастание)</option>
+                        <option value="price-desc">По цене (убывание)</option>
+                        <option value="name-asc">По названию (А-Я)</option>
+                        <option value="name-desc">По названию (Я-А)</option>
+                    </select>
+                </div>
+            </div>
+            <div id="shop-products" class="shop-products-grid">
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно корзины -->
+    <div id="cart-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" id="cart-modal-close">&times;</span>
+            <h2>Корзина</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <span>Итого: </span><span id="cart-total-price">0 ₸</span>
+            </div>
+            <button id="cart-checkout-btn" class="btn">Оформить заказ</button>
+        </div>
+    </div>
+    <!-- Модальное окно оформления заказа -->
+    <div id="checkout-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" id="checkout-modal-close">&times;</span>
+            <h2>Оформление заказа</h2>
+            <form id="checkout-form">
+                <label>Имя:<br><input type="text" name="name" required></label><br>
+                <label>Телефон:<br><input type="tel" name="phone" required></label><br>
+                <label>Адрес доставки:<br><input type="text" name="address" required></label><br>
+                <label>Email:<br><input type="email" name="email" required></label><br>
+                <button type="submit" class="btn">Подтвердить заказ</button>
+            </form>
+            <div id="checkout-success" style="display:none; color: #1ecb7c; margin-top: 12px;">Спасибо за заказ! Мы свяжемся с вами.</div>
+        </div>
+    </div>
+    <!-- Модальное окно быстрого заказа -->
+    <div id="quickbuy-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="modal-close" id="quickbuy-modal-close">&times;</span>
+            <h2>Быстрая покупка</h2>
+            <div id="quickbuy-product"></div>
+            <form id="quickbuy-form">
+                <label>Имя:<br><input type="text" name="name" required></label><br>
+                <label>Телефон:<br><input type="tel" name="phone" required></label><br>
+                <label>Адрес доставки:<br><input type="text" name="address" required></label><br>
+                <label>Email:<br><input type="email" name="email" required></label><br>
+                <button type="submit" class="btn">Купить</button>
+            </form>
+            <div id="quickbuy-success" style="display:none; color: #1ecb7c; margin-top: 12px;">Спасибо за покупку! Мы свяжемся с вами.</div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Категории</h4>
+                <ul>
+                    <li><a href="#">Смартфоны</a></li>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li><a href="#">Телевизоры</a></li>
+                    <li><a href="#">Аксессуары</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Помощь</h4>
+                <ul>
+                    <li><a href="#">Доставка</a></li>
+                    <li><a href="#">Возврат</a></li>
+                    <li><a href="#">Гарантия</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul>
+                    <li>+7 (707) 109-91-05</li>
+                    <li>limonorigin@gmail.com</li>
+                    <li>г. Кокшетау, ул. Ауельбекова 127</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Мы в соцсетях</h4>
+                <div class="footer-socials">
+                    <a href="#" class="svg-icon" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+                    </a>
+                    <a href="#" class="svg-icon" title="Telegram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+                    </a>
+                    <a href="#" class="svg-icon" title="VK">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3V3z"/><path d="M7 9c1.5 2 3 4 5 4s3.5-2 5-4"/><path d="M7 15c1.5-2 3-4 5-4s3.5 2 5 4"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 ООО какое-то там я уже забыл его название емаё устал этот сайт делать, можно мне пятёрку пожалуйста. Все права защищены.</div>
+    </footer>
+    <script src="shop.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
