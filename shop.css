@@ -165,3 +165,58 @@
 #cart-items .cart-item-remove:hover {
     text-decoration: underline;
 }
+
+@media (max-width: 900px) {
+    .shop-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .shop-categories {
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-start;
+    }
+    .shop-products-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+    .modal-content {
+        min-width: 220px;
+        padding: 18px 10px 18px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .shop-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+    }
+    .shop-categories {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .shop-products-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    .shop-product-card {
+        padding: 10px 4px 10px 4px;
+        font-size: 0.97rem;
+    }
+    .shop-product-card img {
+        width: 60px;
+        height: 60px;
+    }
+    .modal-content {
+        min-width: 0;
+        max-width: 98vw;
+        padding: 10px 2vw 10px 2vw;
+        font-size: 0.98rem;
+    }
+    .btn.small, .cart-btn.small {
+        padding: 5px 6px;
+        font-size: 0.90rem;
+    }
+}
