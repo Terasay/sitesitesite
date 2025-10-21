@@ -96,7 +96,6 @@
     font-size: 0.90rem;
     min-width: 0;
 }
-/* --- Модальные окна --- */
 .modal {
     position: fixed;
     z-index: 9999;
