@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Инициализация
     showSlide(0);
     startSlider();
 });
